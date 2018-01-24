@@ -1,3 +1,8 @@
+/*
+Task #1
+Question: there is a collection of emojis and dictionary of numbers of buttons. We should to allocate each emoji to each button and emojis can not repeat more than twice. 
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
 var emojisCollection: [String] = ["😎", "🤠", "🎃", "👻", "😋", "😎"]
 var buttonCollection = [Int:String]()
 func allocateEmojies(_ numberInCollection: Int, getEmojii emojii: String){
