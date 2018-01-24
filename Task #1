@@ -1,0 +1,17 @@
+var emojisCollection: [String] = ["😎", "🤠", "🎃", "👻", "😋", "😎"]
+var buttonCollection = [Int:String]()
+func allocateEmojies(_ numberInCollection: Int, getEmojii emojii: String){
+    if buttonCollection.values.contains(emojii){
+        if buttonCollection.values.filter({$0 == emojii}).count == 2{
+            emojisCollection.remove(at: emojisCollection.index(of: emojii)!)
+        }else if buttonCollection.values.filter({$0 == emojii}).count < 2{
+            buttonCollection[numberInCollection] = emojii
+        }
+    }else{
+        buttonCollection[numberInCollection] = emojii
+    }
+}
+for counter in 0...emojisCollection.count*2{
+    let getRandomNumber = Int(arc4random_uniform(UInt32(emojisCollection.count)))
+    allocateEmojies(counter,getEmojii: emojisCollection[getRandomNumber])
+}
