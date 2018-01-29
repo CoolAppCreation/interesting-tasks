@@ -1,0 +1,33 @@
+/*
+Task #2
+Question: we have some number. So, we must check that the numbers in the number do not repeat. For example, we have number 1001.
+We check this number with our function and we must return 1010 as a result.
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+func checkNumbers(_ numberCollection: Int) -> Int{
+    var newNumber = String(numberCollection).flatMap({Int(String($0))})
+    var newNumberSecond = [Int]()
+    while newNumber.count != 0 {
+    for n in newNumber{
+        if newNumberSecond.count > 0 && newNumberSecond.count < 2{
+            if newNumberSecond.first! != n{
+                newNumberSecond.append(n)
+                newNumber.remove(at: newNumber.index(of: n)!)
+            }
+        }else if newNumberSecond.count == 0{
+            newNumberSecond.append(n)
+            newNumber.remove(at: newNumber.index(of: n)!)
+        }else if newNumberSecond.count >= 2{
+            if newNumberSecond.last! != n{
+                newNumberSecond.append(n)
+                newNumber.remove(at: newNumber.index(of: n)!)
+            }
+        }
+    }
+    }
+    var result = ""
+    for n in newNumberSecond{
+        result.append(String(n))
+    }
+    return Int(result)!
+}
