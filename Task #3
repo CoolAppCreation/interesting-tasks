@@ -1,0 +1,18 @@
+/*
+Task #3
+Question: we have some string and have some words which are banned. So we must check our string and if it contains one of banned words,
+we must replace it with "*".
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+func checkWords(_ checkingString: String, _ bannedWords: [String]) -> String{
+    var getThisString = checkingString.split(separator: " ")
+    for w in getThisString{
+        if bannedWords.contains(String(w.lowercased())){
+            let indexOfThisWord = getThisString.index(of: w)!
+            getThisString.remove(at: indexOfThisWord)
+            var deletedText = String.SubSequence(repeating: "*", count: w.count)
+            getThisString.insert(deletedText, at: indexOfThisWord)
+        }
+    }
+    return getThisString.joined(separator: " ")
+}
