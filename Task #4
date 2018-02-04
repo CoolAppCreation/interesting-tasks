@@ -1,0 +1,26 @@
+
+/*
+Task #4
+Question: we have collection of numbers and some number. We must find two numbers in our collection, which summary equal
+to number which we set. If there are not such numbers, we must find some number, which in summary with first number of collection equal
+to number which we set.
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+func chooseNeededNumber(_ numberCollection: [Int], _ searchingNumber: Int) -> String{
+    var result = ""
+    for number in numberCollection{
+        let getCheckedNumber = number
+        let getIndexOfCheckedNumber = numberCollection.index(of: getCheckedNumber)!
+        for index in numberCollection.indices{
+            if index != getIndexOfCheckedNumber{
+                let computeTwoValues = getCheckedNumber + numberCollection[index]
+                if computeTwoValues == searchingNumber{
+                    result = "To get \(searchingNumber) we should calculate \(getCheckedNumber) and \(numberCollection[index])"
+                }else{
+                    result = "To get \(searchingNumber) we should add \(searchingNumber - numberCollection[0]) to our collection of numbers and calculate it with \(numberCollection[0])"
+                }
+            }
+        }
+    }
+    return result
+}
