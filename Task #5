@@ -1,0 +1,29 @@
+/*
+Task #5
+Question: we have some user which makes calls to different number. We must check telephone codes of these numbers and define the country 
+of the user.
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+func findNumByCode(_ telephoneCollection: [Int]) -> String{
+    var countCalls = [Int:Int]()
+    for _ in 0..<telephoneCollection.count{
+        let randomNumber = Int(arc4random_uniform(UInt32(telephoneCollection.count)))
+        if countCalls.keys.contains(telephoneCollection[randomNumber]){
+            countCalls[telephoneCollection[randomNumber]]! += 1
+        }else{
+            countCalls[telephoneCollection[randomNumber]] = 1
+        }
+    }
+    findCountryByCode(countCalls.sorted(by: {$0.value > $1.value}).first!.key)
+    return "We can say that this user is from \(findCountryByCode(countCalls.sorted(by: {$0.value > $1.value}).first!.key)), because he often call on numbers which telephone code is \(countCalls.sorted(by: {$0.value > $1.value}).first!.key)"
+}
+func findCountryByCode(_ telephoneCodeInt: Int) -> String {
+    let countriesCode = ["Ukraine": 380, "Hungary": 36, "Slovakia": 421, "Poland": 48, "Belarus": 375]
+    var countryNameForResult = ""
+    for countryName in countriesCode.keys{
+        if countriesCode[countryName] == telephoneCodeInt{
+            countryNameForResult = countryName
+        }
+    }
+    return countryNameForResult
+}
