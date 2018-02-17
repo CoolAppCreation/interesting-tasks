@@ -1,0 +1,16 @@
+/*
+Task #7
+Question: we have max weight, which truck can carry, weight of one container and number of containers. We must calculate how many
+trucks we need for this order and say: is this order profitable?
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+func calculateNumberOfTrucks(_ maxWeightForTruck: Int, _ weightOfOneContainer: Int, _ numberOfContainers: Int) -> String{
+    let totalWeightOfContainers = weightOfOneContainer * numberOfContainers
+    var truckFullOrNot = ""
+    if Int(String(totalWeightOfContainers % maxWeightForTruck).flatMap{Int(String($0))}.first!) == 0{
+        truckFullOrNot = "it will be good order, because all trucks are filled"
+    }else{
+        truckFullOrNot = "it will be bad order, because not all trucks are filled"
+    }
+    return "For this order we need \((totalWeightOfContainers / maxWeightForTruck) + Int(String(totalWeightOfContainers / maxWeightForTruck).flatMap{Int(String($0))}.first!)) trucks. In conclusion, \(truckFullOrNot)"
+}
