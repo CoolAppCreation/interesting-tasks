@@ -1,0 +1,13 @@
+/*
+Task #6
+Question: we have some cities and their timezone and name. We set some time for first city and must check time for other two cities
+with our function. Then, we print the result in string.
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+var kiev = ["2", "Kiev"]
+var tokyo = ["9", "Tokyo"]
+var newyork = ["-5", "New York"]
+func checkCityTime(_ cityOne: [String], _ cityTwo: [String], _ cityThree: [String], _ timeInFirstCity: Int) -> String{
+    let differenceInTime = (Int(cityTwo[0])! - Int(cityOne[0])!, Int(cityThree[0])! - Int(cityOne[0])!)
+    return "If in \(cityOne[1]) is \(timeInFirstCity) o'clock, so in \(cityTwo[1]) is \(timeInFirstCity + differenceInTime.0) o'clock and in \(cityThree[1]) is \(timeInFirstCity + differenceInTime.1) o'clock"
+}
