@@ -1,0 +1,26 @@
+
+/*
+Task #8
+Question: we have number of flat, number of floors in one house and number of flats on one floor. In result, we must say number
+of house where our flat is situated
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+func findFlat(_ flatNumber: Int, _ floorOfHouse: Int, _ numberOfFlatsOfOneFloor: Int) -> String{
+    var totalResultOfFloor = 0
+    var totalResultOfHouse = 0
+    var calculateNedeedFloor = flatNumber / numberOfFlatsOfOneFloor
+    if flatNumber % numberOfFlatsOfOneFloor <= numberOfFlatsOfOneFloor && flatNumber % numberOfFlatsOfOneFloor > 0{
+        calculateNedeedFloor += 1
+    }else{
+        calculateNedeedFloor = calculateNedeedFloor + ((flatNumber / numberOfFlatsOfOneFloor) % numberOfFlatsOfOneFloor)
+    }
+    totalResultOfFloor = calculateNedeedFloor
+    var calculateNedeedHouse = totalResultOfFloor / floorOfHouse
+    if totalResultOfFloor % floorOfHouse <= floorOfHouse && totalResultOfFloor % floorOfHouse > 0{
+        calculateNedeedHouse += 1
+    }else{
+        calculateNedeedHouse = calculateNedeedHouse + ((totalResultOfFloor / floorOfHouse) % floorOfHouse)
+    }
+    totalResultOfHouse = calculateNedeedHouse
+    return "The flat which number is \(flatNumber) is situated in \(totalResultOfHouse) house"
+}
