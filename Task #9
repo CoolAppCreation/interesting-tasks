@@ -1,0 +1,14 @@
+/*
+Task #9
+Question: we have time when first boat depart, time between two trips, number of our passenger and total number of passengers
+which boat can carry. We must analyse and say when passenger with specific number will depart
+I post my solution of this task and you can propose your solution or show my mistakes. Thank you in advance.
+*/
+func timeForDeparting(_ firstTripTime: Int, _ timeBetweenTrip: Double, _ passengerNumber: Int, _ totalPassengerForOneTrip: Int) -> String{
+    var countTrip = passengerNumber / totalPassengerForOneTrip
+    if passengerNumber % totalPassengerForOneTrip > 0{
+        countTrip += 1
+    }
+    let countTime = Double(8) + (Double(countTrip) * timeBetweenTrip)
+    return "If passenger number is \(passengerNumber), his boat will depart at \(countTime)"
+}
